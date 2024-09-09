@@ -13,12 +13,12 @@ const Explore = () => {
     setPlaylist(playlist.filter((track) => track.id !== trackIdToRemove));
 
   return (
-    <div>
-      <div>
+    <div className="explore">
+      <div className="search-container">
         <SearchBar setResults={setResults} />
         <SearchResults results={results} addToPlaylist={addToPlaylist} />
       </div>
-      <div>
+      <div className="playlist-container">
         <CreatePlaylist />
         <TrackList removeFromPlaylist={removeFromPlaylist} />
       </div>

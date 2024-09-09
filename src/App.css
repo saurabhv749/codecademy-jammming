@@ -16,7 +16,7 @@
   --stone-950: #0a0a0a;
 }
 html {
-  font-size: 18px;
+  font-size: 16px;
 }
 body {
   background-color: var(--stone-950);
@@ -90,9 +90,9 @@ header {
   padding: 8px;
   border-radius: 32px;
 }
-.profile img {
-  height: 50px;
-  width: 50px;
+.profile .avatar {
+  height: 32px;
+  width: 32px;
   object-fit: cover;
   border-radius: 50%;
   overflow: hidden;
@@ -109,4 +109,73 @@ header {
   max-width: 600px;
   padding: 1rem;
   text-align: center;
+}
+
+.explore {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.explore .search-container,
+.explore .playlist-container {
+  width: 50%;
+  padding: 2rem 16px;
+}
+
+svg.icon {
+  color: var(--stone-600);
+  fill: currentColor;
+  width: 32px;
+}
+
+.search-bar .input-container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  /* max-width: 500px; */
+  margin: auto;
+  padding: 8px 16px;
+  border: 1px solid var(--stone-800);
+  border-radius: 32px;
+}
+.search-bar .input-container:hover,
+.search-bar .input-container:focus-visible {
+  border-color: var(--stone-300);
+}
+.input-container input {
+  color: var(--stone-300);
+  display: block;
+  width: 100%;
+  background: transparent;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+.search-results {
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--stone-800);
+}
+.track .media-info {
+  display: flex;
+  align-items: center;
+}
+.track .media-info .info {
+  margin-left: 8px;
+}
+
+.track .icon {
+  cursor: pointer;
+}
+.track .icon:hover,
+.track .icon:focus-visible,
+.track .icon:active {
+  color: var(--stone-300);
 }
