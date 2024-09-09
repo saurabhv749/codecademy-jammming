@@ -1,8 +1,8 @@
 const UserProfile = ({ display_name, images }) => {
   return (
-    <div>
+    <div className="profile">
       <img src={images[0]?.url} alt="user avatar" />
-      <p>{display_name}</p>
+      <span>{display_name}</span>
     </div>
   );
 };

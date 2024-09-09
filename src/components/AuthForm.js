@@ -7,9 +7,11 @@ const AuthForm = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Try it now by authenticating using Spotify </h2>
-      <button onClick={authenticateUser}>Sign In with Spotify</button>
+      <button className="btn " onClick={authenticateUser}>
+        Sign In with Spotify
+      </button>
     </div>
   );
 };

@@ -1,8 +1,112 @@
-.App-header {
-  background-color: #282c34;
-  color: white;
+/* @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap"); */
+/* GLOBAL */
+
+:root {
+  --page-max-w: 1366px;
+  --stone-50: #fafafa;
+  --stone-100: #f5f5f5;
+  --stone-200: #e5e5e5;
+  --stone-300: #d4d4d4;
+  --stone-400: #a3a3a3;
+  --stone-500: #737373;
+  --stone-600: #525252;
+  --stone-700: #404040;
+  --stone-800: #262626;
+  --stone-900: #171717;
+  --stone-950: #0a0a0a;
+}
+html {
+  font-size: 18px;
+}
+body {
+  background-color: var(--stone-950);
+  color: var(--stone-300);
+  font-family: sans-serif;
+  margin: 0 auto;
+  max-width: var(--page-max-w);
+}
+
+main {
+  padding: 0 16px;
+}
+
+.btn {
+  display: block;
+  border: 1px solid var(--stone-700);
+  padding: 8px 16px;
+  border-radius: 32px;
+  background: var(--stone-950);
+  color: var(--stone-300);
+  cursor: pointer;
+  margin: 16px auto;
+}
+.btn:hover {
+  background: var(--stone-800);
+}
+.btn:active,
+.btn:focus-visible {
+  background: var(--stone-700);
+}
+
+.btn-flat {
+  background-color: var(--stone-800);
+  color: var(--stone-200);
+}
+.btn-flat:hover {
+  background-color: var(--stone-700);
+}
+
+button:disabled {
+  cursor: default;
+  color: var(--stone-500);
+  border-color: var(--stone-900);
+}
+
+/* Header */
+header {
+  border-bottom: 1px solid var(--stone-800);
+  position: sticky;
+  top: 0;
+  padding: 16px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  background: var(--stone-950);
   justify-content: space-between;
+}
+.logo {
+  font-size: 2rem;
+}
+.logo .m {
+  color: greenyellow;
+  font-weight: bold;
+}
+.logo .m.m-2 {
+  font-size: 2.4rem;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--stone-800);
+  padding: 8px;
+  border-radius: 32px;
+}
+.profile img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  outline: 2px solid var(--stone-300);
+}
+.profile span {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.login-container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 600px;
+  padding: 1rem;
+  text-align: center;
 }

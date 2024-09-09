@@ -9,7 +9,7 @@ function App() {
   const [profile, setProfile] = useState(null);
 
   return (
-    <main className="App">
+    <main>
       <Auth profile={profile} setProfile={setProfile} />
       <Header userProfile={profile} />
       {profile && profile.email ? <Explore /> : <AuthForm />}
