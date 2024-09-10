@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { getSearchResults } from "../utils";
 
-const SearchBar = () => {
+const SearchBar = ({ setResults }) => {
   const [query, setQuery] = useState("");
 
   const handleQueryChange = (e) => setQuery(e.target.value);
   const handleQuerySubmit = (e) => {
     e.preventDefault();
-    console.log(query);
+    getSearchResults({
+      query,
+    }).then((tracks) => setResults(tracks));
   };
   return (
     <div className="search-bar">

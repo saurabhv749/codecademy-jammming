@@ -1,10 +1,15 @@
 import TrackList from "./TrackList";
 
-const SearchResults = () => {
+const SearchResults = ({ results, addToPlaylist, changeAudioSrc }) => {
   return (
     <div className="search-results">
       <h2>Search Results</h2>
-      <TrackList />
+      <TrackList
+        tracks={results}
+        isResult={true}
+        addToPlaylist={addToPlaylist}
+        changeAudioSrc={changeAudioSrc}
+      />
     </div>
   );
 };

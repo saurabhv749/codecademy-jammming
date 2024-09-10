@@ -1,21 +1,27 @@
 import { useState } from "react";
+import { savePlaylistToSpotify } from "../utils";
 
-const CreatePlaylist = () => {
+const CreatePlaylist = ({ playlist, setPlaylist }) => {
   const [name, setName] = useState("");
   const handleNameChange = (e) => setName(e.target.value);
   const handlePlaylistSubmit = (e) => {
     e.preventDefault();
-    console.log(name);
     // upload playlist
+    savePlaylistToSpotify({
+      playlistName: name,
+      trackIds: playlist.map((x) => x.uri),
+    });
+
+    setName("");
+    setPlaylist([]);
   };
   return (
     <div>
+      <h2>Create Playlist</h2>
       <form onSubmit={handlePlaylistSubmit}>
-        <label htmlFor="playlistName">Playlist Name</label>
         <input type="text" value={name} onChange={handleNameChange} required />
-        <input type="submit" value="Save Playlist" />
+        <input className="btn" type="submit" value="Save Playlist to Spotify" />
       </form>
-      <h2>{name}</h2>
     </div>
   );
 };

@@ -1,10 +1,23 @@
 import Track from "./Track";
 
-const TrackList = () => {
+const TrackList = ({
+  tracks,
+  isResult,
+  changeAudioSrc,
+  addToPlaylist,
+  removeFromPlaylist,
+}) => {
   return (
     <div>
-      {[1, 2, 3, 4, 5, 6].map((t) => (
-        <Track key={t} isResult={false} />
+      {tracks.map((track) => (
+        <Track
+          key={track.id}
+          isResult={isResult}
+          {...track}
+          addToPlaylist={addToPlaylist}
+          changeAudioSrc={changeAudioSrc}
+          removeFromPlaylist={removeFromPlaylist}
+        />
       ))}
     </div>
   );

@@ -10,6 +10,7 @@ const Auth = ({ profile, setProfile }) => {
       if (accessToken && profile) {
         window.history.pushState({}, "", window.location.origin);
         localStorage.setItem("access_token", accessToken);
+        localStorage.setItem("user_id", profile.id);
         setProfile(profile);
       }
     };

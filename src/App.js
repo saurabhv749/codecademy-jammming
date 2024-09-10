@@ -8,11 +8,21 @@ import Explore from "./components/Explore";
 function App() {
   const [profile, setProfile] = useState(null);
 
+  if (!profile?.email) {
+    return (
+      <main>
+        <Auth profile={profile} setProfile={setProfile} />
+        <Header userProfile={profile} />
+        <AuthForm />
+      </main>
+    );
+  }
+
   return (
     <main>
       <Auth profile={profile} setProfile={setProfile} />
       <Header userProfile={profile} />
-      {profile && profile.email ? <Explore /> : <AuthForm />}
+      <Explore />
     </main>
   );
 }

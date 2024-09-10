@@ -10,18 +10,64 @@ async function fetchWebApi(endpoint, method, body) {
   return await res.json();
 }
 
+function formatMilliseconds(milliseconds) {
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function getTracks(tracks) {
+  return tracks.map((track) => ({
+    title: track.name,
+    album: track.album.name,
+    poster: track.album.images.find((x) => x.height === 64).url,
+    artists: track.album.artists.map((x) => x.name).join(","),
+    preview_url: track.preview_url,
+    id: track.id,
+    uri: track.uri,
+    duration: formatMilliseconds(track.duration_ms),
+  }));
+}
+
 async function getSearchResults({
   query,
   limit = 3,
   offset = 0,
-  type = "album",
+  type = "track",
 }) {
-  return (
-    await fetchWebApi(
-      `v1/search?q=aaj ki raat&limit=3&offset=0&type=album,artist`,
-      "GET"
-    )
-  ).items;
+  const response = await fetchWebApi(
+    `v1/search?q=${query}&limit=${limit}&offset=${offset}&type=${type}`,
+    "GET"
+  );
+
+  const tracks = getTracks(response.tracks.items);
+
+  return tracks;
+}
+
+async function savePlaylistToSpotify({ playlistName, trackIds }) {
+  const userID = localStorage.getItem("user_id");
+
+  const createPlaylistResponse = await fetchWebApi(
+    `v1/users/${userID}/playlists`,
+    "POST",
+    {
+      name: playlistName,
+      description: "created via jammming",
+    }
+  );
+  const playlistID = createPlaylistResponse.id;
+
+  const addTracksResponse = await fetchWebApi(
+    `v1/playlists/${playlistID}/tracks`,
+    "POST",
+    {
+      uris: trackIds,
+    }
+  );
+
+  return addTracksResponse;
 }
 
 // Spotify API helper functions : https://developer.spotify.com/documentation/web-api/howtos/web-app-profile
@@ -55,7 +101,10 @@ async function redirectToAuthCodeFlow(clientId) {
   params.append("client_id", clientId);
   params.append("response_type", "code");
   params.append("redirect_uri", "http://localhost:3000/callback");
-  params.append("scope", "user-read-private user-read-email");
+  params.append(
+    "scope",
+    "user-read-private user-read-email playlist-modify-private playlist-modify-public"
+  );
   params.append("code_challenge_method", "S256");
   params.append("code_challenge", challenge);
 
@@ -95,4 +144,5 @@ export {
   redirectToAuthCodeFlow,
   getAccessToken,
   fetchProfile,
+  savePlaylistToSpotify,
 };
