@@ -11,6 +11,7 @@ const SearchBar = ({ setResults }) => {
       query,
     }).then((tracks) => setResults(tracks));
   };
+
   return (
     <div className="search-bar">
       <form onSubmit={handleQuerySubmit}>

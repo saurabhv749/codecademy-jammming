@@ -8,10 +8,16 @@ const AuthForm = () => {
 
   return (
     <div className="login-container">
-      <h2>Try it now by authenticating using Spotify </h2>
-      <button className="btn " onClick={authenticateUser}>
-        Sign In with Spotify
-      </button>
+      <div className="container">
+        <h2>Unlock a personalized music experience!</h2>
+        <p>
+          Sign in with Spotify to explore your favorite tracks, playlists, and
+          more.
+        </p>
+        <button className="btn" onClick={authenticateUser}>
+          Connect with Spotify
+        </button>
+      </div>
     </div>
   );
 };

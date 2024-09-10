@@ -61,6 +61,22 @@ button:disabled {
   border-color: var(--stone-900);
 }
 
+svg.icon {
+  color: var(--stone-600);
+  fill: currentColor;
+  width: 32px;
+}
+
+input {
+  color: var(--stone-300);
+  display: block;
+  width: 100%;
+  background: transparent;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
 /* Header */
 header {
   border-bottom: 1px solid var(--stone-800);
@@ -107,20 +123,30 @@ header {
   margin-left: 8px;
 }
 
+/* AuthForm */
 .login-container {
-  margin: 0 auto;
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
   text-align: center;
+  line-height: 2.5;
+}
+.login-container .container {
+  width: 90%;
+  max-width: 600px;
 }
 
+.login-container .btn {
+  color: greenyellow;
+}
+/* Library */
 .explore {
   min-height: 100vh;
   width: 100%;
   padding-bottom: 9rem;
-  /* display: flex;
-  justify-content: space-between; */
 }
 .explore .search-container,
 .explore .playlist-container {
@@ -130,17 +156,10 @@ header {
   padding: 2rem 16px;
 }
 
-svg.icon {
-  color: var(--stone-600);
-  fill: currentColor;
-  width: 32px;
-}
-
 .search-bar .input-container {
   display: flex;
   justify-content: center;
   width: 90%;
-  /* max-width: 500px; */
   margin: auto;
   padding: 8px 16px;
   border: 1px solid var(--stone-800);
@@ -150,21 +169,13 @@ svg.icon {
 .search-bar .input-container:focus-visible {
   border-color: var(--stone-300);
 }
-input {
-  color: var(--stone-300);
-  display: block;
-  width: 100%;
-  background: transparent;
-  padding: 8px;
-  border: none;
-  outline: none;
-}
 
 .search-results h2 {
   text-align: center;
   margin: 2rem 0;
 }
 
+/* Track */
 .track {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -215,7 +226,7 @@ input {
 .track .icon:active {
   color: var(--stone-300);
 }
-/* player */
+/* AudioPlayer */
 
 .audio-player {
   width: 100%;

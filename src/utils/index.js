@@ -1,3 +1,5 @@
+import { HOST } from "../config";
+
 async function fetchWebApi(endpoint, method, body) {
   const accessToken = localStorage.getItem("access_token");
   const res = await fetch(`https://api.spotify.com/${endpoint}`, {
@@ -32,7 +34,7 @@ function getTracks(tracks) {
 
 async function getSearchResults({
   query,
-  limit = 3,
+  limit = 10,
   offset = 0,
   type = "track",
 }) {
@@ -100,7 +102,7 @@ async function redirectToAuthCodeFlow(clientId) {
   const params = new URLSearchParams();
   params.append("client_id", clientId);
   params.append("response_type", "code");
-  params.append("redirect_uri", "http://localhost:3000/callback");
+  params.append("redirect_uri", `${HOST}/callback`);
   params.append(
     "scope",
     "user-read-private user-read-email playlist-modify-private playlist-modify-public"
@@ -118,7 +120,7 @@ async function getAccessToken(clientId, code) {
   params.append("client_id", clientId);
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "http://localhost:3000/callback");
+  params.append("redirect_uri", `${HOST}/callback`);
   params.append("code_verifier", verifier);
 
   const result = await fetch("https://accounts.spotify.com/api/token", {
