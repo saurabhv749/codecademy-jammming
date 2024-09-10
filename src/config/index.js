@@ -1,2 +1,2 @@
 export const CLIENT_ID = "1359f04db68f461c95c15153d37a914f";
-export const HOST = "http://localhost:3000";
+export const HOST = window.location.origin;
