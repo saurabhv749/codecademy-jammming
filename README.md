@@ -23,6 +23,7 @@ Jammming is a web application that allows users to create and manage playlists o
 
 - User authentication with Spotify using OAuth 2.0
 - Search for tracks on Spotify
+- Play track preview
 - Create playlists
 - Add tracks to playlists
 
