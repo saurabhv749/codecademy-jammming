@@ -1,19 +1,26 @@
-import { useState } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Root from "./components/Root";
+import Home from "./pages/Home";
+import Library from "./pages/Library";
+// Styles
 import "./App.css";
-import Auth from "./components/Auth";
-import Header from "./components/Header";
-import Explore from "./components/Explore";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+      <Route index element={<Home />} />
+      <Route path="library" element={<Library />} />
+    </Route>
+  )
+);
 
 function App() {
-  const [profile, setProfile] = useState(null);
-
-  return (
-    <main>
-      <Header userProfile={profile} />
-      <Auth profile={profile} setProfile={setProfile} />
-      {profile?.email && <Explore />}
-    </main>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

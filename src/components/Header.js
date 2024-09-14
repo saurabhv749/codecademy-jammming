@@ -1,19 +1,23 @@
+import { NavLink } from "react-router-dom";
 import UserProfile from "./UserProfile";
+import { useSelector } from "react-redux";
 
-const Header = ({ userProfile }) => {
+const Header = () => {
+  const { user } = useSelector((state) => state.profile);
+
   return (
     <header>
       <div className="header-container">
-        <p className="logo">
+        <NavLink to="/" className="logo">
           Ja
           <span className="m m-1">m</span>
           <span className="m m-2">m</span>
           <span className="m m-3">m</span>
           ing
-        </p>
-        {userProfile && userProfile.email && (
+        </NavLink>
+        {user && (
           <div className="user-profile">
-            <UserProfile {...userProfile} />
+            <UserProfile {...user} />
           </div>
         )}
       </div>

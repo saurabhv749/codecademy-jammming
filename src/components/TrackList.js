@@ -3,23 +3,24 @@ import Track from "./Track";
 const TrackList = ({
   tracks,
   isResult,
-  changeAudioSrc,
+  // optional methods
+  changeTrack,
   addToPlaylist,
   removeFromPlaylist,
 }) => {
   return (
-    <div>
+    <>
       {tracks.map((track) => (
         <Track
           key={track.id}
+          track={track}
           isResult={isResult}
-          {...track}
+          changeTrack={changeTrack}
           addToPlaylist={addToPlaylist}
-          changeAudioSrc={changeAudioSrc}
           removeFromPlaylist={removeFromPlaylist}
         />
       ))}
-    </div>
+    </>
   );
 };
 export default TrackList;

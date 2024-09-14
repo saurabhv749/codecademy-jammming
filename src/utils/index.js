@@ -48,9 +48,7 @@ async function getSearchResults({
   return tracks;
 }
 
-async function savePlaylistToSpotify({ playlistName, trackIds }) {
-  const userID = localStorage.getItem("user_id");
-
+async function savePlaylistToSpotify({ playlistName, trackIds, userID }) {
   const createPlaylistResponse = await fetchWebApi(
     `v1/users/${userID}/playlists`,
     "POST",

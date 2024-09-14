@@ -55,10 +55,12 @@ main {
   background-color: var(--stone-700);
 }
 
-button:disabled {
+button:disabled,
+input[type="submit"]:disabled {
   cursor: default;
   color: var(--stone-500);
   border-color: var(--stone-900);
+  opacity: 0.7;
 }
 
 svg.icon {
@@ -95,6 +97,8 @@ header {
 }
 .logo {
   font-size: 2rem;
+  text-decoration: none;
+  color: var(--stone-100);
 }
 .logo .m {
   color: greenyellow;
@@ -260,7 +264,6 @@ header {
 .player-container img {
   display: inline-block;
   margin: 8px;
-  /* text-wrap: nowrap; */
 }
 .player-container span {
   max-width: 200px;

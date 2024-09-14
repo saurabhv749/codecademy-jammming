@@ -1,15 +1,23 @@
 import { useState } from "react";
 import { getSearchResults } from "../utils";
+import { removeAllTracks, setTracks } from "../store/searchResultSlice";
+import { useDispatch } from "react-redux";
 
-const SearchBar = ({ setResults }) => {
+const SearchBar = () => {
+  const dispatch = useDispatch();
   const [query, setQuery] = useState("");
 
   const handleQueryChange = (e) => setQuery(e.target.value);
   const handleQuerySubmit = (e) => {
     e.preventDefault();
+    if (!query) {
+      dispatch(removeAllTracks());
+      return;
+    }
+
     getSearchResults({
       query,
-    }).then((tracks) => setResults(tracks));
+    }).then((tracks) => dispatch(setTracks(tracks)));
   };
 
   return (

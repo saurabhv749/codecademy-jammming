@@ -1,18 +1,21 @@
+import { useSelector } from "react-redux";
+
 const Track = ({
+  track,
+  //
   isResult,
-  id,
-  title,
-  album,
-  poster,
-  artists,
-  preview_url,
-  duration,
-  changeAudioSrc,
+  changeTrack,
   addToPlaylist,
   removeFromPlaylist,
 }) => {
+  const { track: currentTrack } = useSelector((state) => state.audioPlayer);
+
+  const { id, title, album, poster, artists, duration, preview_url } = track;
+  const playing = currentTrack?.id === id;
+
   const previewTrack = (e) => {
-    changeAudioSrc({ poster, title, preview_url });
+    const newAudio = { id, poster, title, preview_url };
+    changeTrack(newAudio);
   };
 
   const handleAddToPlaylist = (e) => {
@@ -23,7 +26,7 @@ const Track = ({
   };
 
   return (
-    <article className="track">
+    <article className={playing ? "track playing" : "track"} id={"track-" + id}>
       {preview_url && isResult && (
         <span
           className="icon-play"
