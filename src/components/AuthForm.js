@@ -1,11 +1,6 @@
-import { CLIENT_ID } from "../config";
-import { redirectToAuthCodeFlow } from "../utils";
+import { authenticateUser } from "../utils";
 
 const AuthForm = ({ loading }) => {
-  const authenticateUser = () => {
-    redirectToAuthCodeFlow(CLIENT_ID);
-  };
-
   return (
     <div className="login-container">
       <div className="container">
